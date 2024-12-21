@@ -1,0 +1,140 @@
+# Week 1 notes:
+
+**I have some questions regarding keywords:**
+
+1 Are we interested in beauty tech news as well?
+2 Are we interested in news about brands? (ex. new product promotion)
+4 We are looking for beauty news in english, I searched for news in the US and US and GB, is it válid?
+5 Do you have more suggestiond about keywords? ["beauty trends", "skincare", "makeup", "cosmetics", "beauty tech"]
+6 I created a 3rd version based on an score rating, considering trustful sources about beauty such as:
+PREFERRED_SOURCES = [
+    "theindustry.beauty", "businessoffashion.com", "glossy.co",
+    "whowhatwear.com", "women.com", "allure.com",
+    "marieclaire.co.uk", "vogue.co.uk", "vogue.com", "marieclaire.com",
+    "women.co.uk"
+]
+
+**Summary of different test done with each function:**
+
+Option 1: ["beauty trends", "skincare", "makeup", "cosmetics"] (US Only)
+
+Results: Focused beauty-related content including beauty trends, cosmetics market growth, vintage makeup, and brand business insights.
+Insight: Keywords are specific, based industry-related news. Consider adding "beauty tech" for tech-driven articles.
+
+Option 2: ["beauty", "skincare", "makeup", "cosmetics", "technology"] (US Only, Mobile)
+
+Results: Mixed beauty-tech content, including AI beauty innovations, tech-related beauty gifts, and unrelated tech/shopping deals.
+Insight: Adding "technology" broadened results but diluted relevance. Consider narrowing to "beauty tech" or "AI beauty."
+
+Option 3: ["beauty trends", "skincare", "makeup", "cosmetics", "beauty tech"] (US & GB, Mobile)
+
+Results: Balanced mix of beauty trends, tech-driven beauty innovations, and holiday gift recommendations. Some unrelated tech content still appeared.
+Insight: This combination worked best, blending beauty trends and tech with minimal irrelevant results. Consider refining "beauty tech" further to avoid unrelated tech stories.
+
+
+
+
+### - fetch-beauty-news.py, US only
+### option 1:
+["beauty trends", "skincare", "makeup", "cosmetics"]
+
+output:
+1. How To Recreate The ‘Cinnamon Roll’ Beauty Trend
+   Source: {'name': 'SheerLuxe', 'icon': 'https://encrypted-tbn0.gstatic.com/faviconV2?url=https://sheerluxe.com&client=NEWS_360&size=96&type=FAVICON&fallback_opts=TYPE,SIZE,URL', 'authors': ['Sapna Rao']}
+   Published: 12/12/2024, 12:41 PM, +0000 UTC
+   Link: https://sheerluxe.com/luxegen/beauty/how-to-recreate-the-cinnamon-roll-beauty-trend
+
+2. “Beauty, cosmetics market projected to reach $46.6 billion by 2032”
+   Source: {'name': 'The Hindu', 'icon': 'https://lh3.googleusercontent.com/f-uqqU36NMn3rQd48Kaf8OWzjGwy-Biq-E4qs8vi-Bvyg_Dng-tLwPbj85PEyySanZtsvQSvGo8'}
+   Published: 12/10/2024, 10:50 PM, +0000 UTC
+   Link: https://www.thehindu.com/business/beauty-cosmetics-market-projected-to-reach-466-billion-by-2032/article68965992.ece
+
+3. [2025] Launch Power Play Lipstick Shades with Accurate Beauty Scanner
+   Source: {'name': 'Perfect Corp', 'icon': 'https://encrypted-tbn0.gstatic.com/faviconV2?url=https://www.perfectcorp.com&client=NEWS_360&size=96&type=FAVICON&fallback_opts=TYPE,SIZE,URL'}
+   Published: 12/11/2024, 08:00 AM, +0000 UTC
+   Link: https://www.perfectcorp.com/business/blog/makeup/Lipstick-shades-virtual-try-on
+
+4. Revealed: the most searched beauty trends on social media in 2024
+   Source: {'name': 'Retail Times', 'icon': 'https://lh3.googleusercontent.com/aKkfz6mAwH9j5MIsgUhQW3v-_zRRmLAV0egJp5atLtKZ7ks02-Z2nAXE30HQSY9m66NCCMOuXSU', 'authors': ['Fiona Briggs']}
+   Published: 12/13/2024, 09:18 AM, +0000 UTC
+   Link: https://retailtimes.co.uk/revealed-the-most-searched-beauty-trends-on-social-media-in-2024/
+
+5. Finding beauty in old makeup: the comeback of vintage cosmetics
+   Source: {'name': 'The Guardian', 'icon': 'https://lh3.googleusercontent.com/SU8FywVNtcrG-wgjvZ_0D1-3JR_pN9LNSgjULFH74N748KVyEdkF1jdbvP4Lr7_ClbPZxL-iPw', 'authors': ['Serena Smith']}
+   Published: 12/07/2024, 01:00 PM, +0000 UTC
+   Link: https://www.theguardian.com/lifeandstyle/2024/dec/07/finding-beauty-in-old-makeup-the-comeback-of-vintage-cosmetics
+
+6. E.l.f. Beauty's CFO on low prices, soaring revenue and Gen Z love
+   Source: {'name': 'The Business Journals', 'icon': 'https://encrypted-tbn0.gstatic.com/faviconV2?url=https://www.bizjournals.com&client=NEWS_360&size=96&type=FAVICON&fallback_opts=TYPE,SIZE,URL', 'authors': ['Hannah Kanik']}
+   Published: 12/12/2024, 10:38 PM, +0000 UTC
+   Link: https://www.bizjournals.com/sanfrancisco/news/2024/12/12/elf-beauty-executive-profile-mandy-fields.html
+
+### - 2fetch-beauty-news.py, US only, movile
+### option 2:
+["beauty", "skincare", "makeup", "cosmetics", "technology"]
+
+output:
+1. Experience Beauty with Digital Human Technology: 'Twinit' Ventures into Global Beauty Tech Market with AI Makeup Solution
+   Source: PR Newswire
+   Published: 23 hours ago
+   Link: https://www.prnewswire.com/news-releases/experience-beauty-with-digital-human-technology-twinit-ventures-into-global-beauty-tech-market-with-ai-makeup-solution-302330942.html
+
+2. Daily deals starting at 40% off: Home, tech, fashion and beauty on sale today
+   Source: Good Morning America
+   Published: 19 hours ago
+   Link: https://www.goodmorningamerica.com/amp/shop/story/abc-gma-daily-deals-116717815
+
+3. High-tech beauty gifts that smooth skin and sculpt the body are big hits for Christmas
+   Source: MSN
+   Published: 21 hours ago
+   Link: http://www.msn.com/en-ie/health/other/high-tech-beauty-gifts-that-smooth-skin-and-sculpt-the-body-are-big-hits-for-christmas/ar-AA1vAZpA?apiversion=v2&noservercache=1&domshim=1&renderwebcomponents=1&wcseo=1&batchservertelemetry=1&noservertelemetry=1
+
+4. Beauty in the beast: A look at the tech behind the terror, as Godzilla turns 70
+   Source: MSN
+   Published: 22 hours ago
+   Link: https://www.msn.com/en-in/news/India/beauty-in-the-beast-a-look-at-the-tech-behind-the-terror-as-godzilla-turns-70/ar-AA1vOd3t
+
+5. The 55 Best Beauty Gifts for Everyone on Your List
+   Source: Harper's BAZAAR
+   Published: 6 hours ago
+   Link: https://www.harpersbazaar.com/beauty/makeup/g4421/best-beauty-gifts/
+
+6. 23 Luxury Beauty Gifts to Impress the Ultimate Cosmetics Connoisseur
+   Source: The Hollywood Reporter
+   Published: 15 hours ago
+   Link: https://www.hollywoodreporter.com/lifestyle/shopping/best-luxury-beauty-gifts-1236086451/
+
+### - 2fetch-beauty-news.py, US and GB, mobile
+### option 3:
+["beauty trends", "skincare", "makeup", "cosmetics", "beauty tech"]
+
+output:
+1. The 55 Best Beauty Gifts for Everyone on Your List
+   Source: Harper's BAZAAR
+   Published: 6 hours ago
+   Link: https://www.harpersbazaar.com/beauty/makeup/g4421/best-beauty-gifts/
+
+2. Experience Beauty with Digital Human Technology: 'Twinit' Ventures into Global Beauty Tech Market with AI Makeup Solution
+   Source: PR Newswire
+   Published: 23 hours ago
+   Link: https://www.prnewswire.com/news-releases/experience-beauty-with-digital-human-technology-twinit-ventures-into-global-beauty-tech-market-with-ai-makeup-solution-302330942.html
+
+3. One of 2025's biggest beauty trends is as a direct result of people using Ozempic
+   Source: MSN
+   Published: 16 hours ago
+   Link: http://www.msn.com/en-ie/lifestyle/style/one-of-2025-s-biggest-beauty-trends-is-as-a-direct-result-of-people-using-ozempic/ar-AA1vDYaA?apiversion=v2&noservercache=1&domshim=1&renderwebcomponents=1&wcseo=1&batchservertelemetry=1&noservertelemetry=1
+
+4. Daily deals starting at 40% off: Home, tech, fashion and beauty on sale today
+   Source: Good Morning America
+   Published: 19 hours ago
+   Link: https://www.goodmorningamerica.com/amp/shop/story/abc-gma-daily-deals-116717815
+
+5. High-tech beauty gifts that smooth skin and sculpt the body are big hits for Christmas
+   Source: MSN
+   Published: 21 hours ago
+   Link: http://www.msn.com/en-ie/health/other/high-tech-beauty-gifts-that-smooth-skin-and-sculpt-the-body-are-big-hits-for-christmas/ar-AA1vAZpA?apiversion=v2&noservercache=1&domshim=1&renderwebcomponents=1&wcseo=1&batchservertelemetry=1&noservertelemetry=1
+
+6. Beauty in the beast: A look at the tech behind the terror, as Godzilla turns 70
+   Source: MSN
+   Published: 22 hours ago
+   Link: https://www.msn.com/en-in/news/India/beauty-in-the-beast-a-look-at-the-tech-behind-the-terror-as-godzilla-turns-70/ar-AA1vOd3t
