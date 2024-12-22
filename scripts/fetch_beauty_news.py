@@ -53,10 +53,11 @@ def fetch_beauty_news(api_key, keywords, num_articles=6):
 
 
 # Example Usage
-API_KEY = os.environ["GOOGLE_API_KEY"]
+""" API_KEY = os.environ["GOOGLE_API_KEY"]
 KEYWORDS = keywords.KEYWORDS["news"]
 articles = fetch_beauty_news(API_KEY, KEYWORDS)
 
 for i, article in enumerate(articles, start=1):
     print(
         f"{i}. {article['title']}\n   Source: {article['source']}\n   Published: {article['published']}\n   Link: {article['link']}\n")
+ """
