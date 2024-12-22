@@ -1,8 +1,12 @@
 # Import libraries
 # Create function for news fetch
-import requests
-import json
+import data.keywords as keywords
+import os
 from datetime import datetime
+import json
+import requests
+from dotenv import load_dotenv
+load_dotenv()
 
 
 def fetch_beauty_news(api_key, keywords, num_articles=6):
@@ -12,7 +16,11 @@ def fetch_beauty_news(api_key, keywords, num_articles=6):
         "q": " OR ".join(keywords),
         "api_key": api_key,
         "hl": "en",
-        "gl": "us"
+        "gl": "us",
+        "cr": "countryGB|countryUS|countryAU|countryCA",
+        "device": "desktop",
+        "tbm": "nws",
+        "tbs": "qdr:d"
     }
 
     response = requests.get(url, params=params)
@@ -23,7 +31,7 @@ def fetch_beauty_news(api_key, keywords, num_articles=6):
     news_data = response.json().get("news_results", [])
 
     # Filter articles by recency and relevance (if necessary)
-    today = datetime.now().date()
+    # today = datetime.now().date()
     filtered_articles = [
         {
             "title": article["title"],
@@ -45,9 +53,8 @@ def fetch_beauty_news(api_key, keywords, num_articles=6):
 
 
 # Example Usage
-
-API_KEY = "69e6ac0bc7a9e0c6e06a5ff9a4bc5b2d462019279d80e08aa4802800c45eae6c"
-KEYWORDS = ["beauty trends", "skincare", "makeup", "cosmetics"]
+API_KEY = os.environ["GOOGLE_API_KEY"]
+KEYWORDS = keywords.KEYWORDS["news"]
 articles = fetch_beauty_news(API_KEY, KEYWORDS)
 
 for i, article in enumerate(articles, start=1):
