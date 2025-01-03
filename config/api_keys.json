@@ -1,8 +1,0 @@
-{
-    "google_api_key": "69e6ac0bc7a9e0c6e06a5ff9a4bc5b2d462019279d80e08aa4802800c45eae6c",
-    "openai_api_key": "YOUR_OPENAI_API_KEY_HERE",
-    "other_api_keys": {
-        "service1": "YOUR_SERVICE1_API_KEY_HERE",
-        "service2": "YOUR_SERVICE2_API_KEY_HERE"
-    }
-}
