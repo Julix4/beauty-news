@@ -28,12 +28,9 @@ def setup_driver(headless=True):
     options.add_argument("--disable-popup-blocking")
     options.add_argument("--start-maximized")
 
-    if headless:
-        options.add_argument("--headless")
-
-    service = Service('./chromedriver')  # Adjust if necessary
+    service = Service(path='./chromedriver')  # Adjust if necessary
     driver = webdriver.Chrome(service=service, options=options)
-    driver.implicitly_wait(10)
+    wait = WebDriverWait(driver, 30)  # Set explicit wait time
     return driver
 
 
@@ -43,9 +40,3 @@ def load_draft_content(json_file):
     json_path = os.path.join(base_path, json_file)
     with open(json_path, "r", encoding="utf-8") as file:
         return json.load(file)
-
-
-def setup_driver():
-    """Initialize and return a Selenium WebDriver instance."""
-    service = Service('./chromedriver')  # Adjust path if needed
-    return webdriver.Chrome(service=service)

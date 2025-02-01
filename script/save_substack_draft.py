@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from script.utils import load_draft_content, setup_driver
+from utils import load_draft_content, setup_driver
 
 
 def save_to_substack(driver, title, body, subtitle=None):
@@ -13,7 +13,7 @@ def save_to_substack(driver, title, body, subtitle=None):
     wait = WebDriverWait(driver, 10)
 
     # Click "Add" button
-    print("[Substack] Clicking 'Add' button...")
+    print("[Substack] Click on 'Add' button...")
     add_button = wait.until(EC.element_to_be_clickable((By.ID, "trigger3")))
     add_button.click()
 

@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from script.utils import load_draft_content, setup_driver
+from utils import load_draft_content, setup_driver
 
 
 def draft_to_medium(driver, title, body):
@@ -33,17 +33,4 @@ def draft_to_medium(driver, title, body):
     wait.until(EC.text_to_be_present_in_element(
         (By.XPATH, "//span[contains(text(), 'Saved')]"), "Saved"))
 
-    # Navigate to drafts
-    print("[Medium] Navigating to drafts...")
-
-    # Click avatar
-    avatar = wait.until(EC.element_to_be_clickable(
-        (By.XPATH, "//img[contains(@class, 'avatar-image')]")))
-    avatar.click()
-
-    # Click "Stories" (Drafts)
-    stories_link = wait.until(EC.element_to_be_clickable(
-        (By.XPATH, "//a[contains(@href, '/me/stories/drafts')]")))
-    stories_link.click()
-
-    print("[Medium] Draft saved successfully and drafts page opened.")
+    print("[Medium] Draft saved successfully.")
