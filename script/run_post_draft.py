@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from selenium import webdriver
 from utils import load_draft_content
 from save_substack_draft import save_to_substack
-from save_medium_draft import draft_to_medium
+from script.publish_medium import draft_to_medium
 
 # Load environment variables
 load_dotenv()
@@ -38,14 +38,16 @@ if __name__ == "__main__":
             platform = draft.get("platform_name").lower()
             title = draft["title"]
             body = draft["body"]
+            tags = draft["tags"]
 
             if platform == "substack":
                 print(f"[Substack] Processing draft: {title}")
-                save_to_substack(driver, title, body, draft.get("subtitle"))
+                save_to_substack(driver, title, body, tags,
+                                 draft.get("subtitle"))
 
             elif platform == "medium":
                 print(f"[Medium] Processing draft: {title}")
-                draft_to_medium(driver, title, body)
+                draft_to_medium(driver, title, body, tags)
 
     except Exception as e:
         print(f"[Error] {e}")

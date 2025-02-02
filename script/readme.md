@@ -1,6 +1,6 @@
-# Auto Poster
+# Content Uutomation Posting
 
-This project automates content posting on **Medium** and **Substack** using **Python** and **Selenium**.
+This repositori provides the content automation posting on **Medium** and **Substack** using **Python** and **Selenium**.
 
 ## Requirements
 - `Python`
@@ -38,6 +38,11 @@ Set the following environment variables:
   python run_substack.py
   ```
 
+## Medium 2FA and Human Interaction
+- Medium requires **two-factor authentication (2FA)** to log in. During the login process, you may be prompted to confirm your identity via email or another authentication method.
+- **Human Action Required**: When running the `run_medium.py` script, the system will pause and wait for you to complete the 2FA process manually. Once authenticated, the script will resume automatically.
+- Ensure you monitor the email account linked to your Medium account during the process to complete the required actions promptly.
+
 ## Draft Content Format
 
 Draft content should be in **JSON format**. Below an example:
@@ -67,8 +72,11 @@ Draft content should be in **JSON format**. Below an example:
         "subtitle": "subtitle",
         "audience": "all"
     }
+```
 
 ## Additional Notes
 Ensure Chromedriver is installed and added to your system's PATH.
 Draft content is expected to be pre-prepared in JSON format and accessible by the scripts.
 
+Possible future updates:
+- AI image creation to complement Medium and Substack post.

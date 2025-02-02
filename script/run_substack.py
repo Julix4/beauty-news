@@ -1,11 +1,7 @@
 from selenium.webdriver.common.by import By
-import time
-from utils import setup_driver
-from login_medium import login_to_medium
 from login_substack import login_to_substack
-from save_medium_draft import draft_to_medium
 from save_substack_draft import save_to_substack
-from utils import load_draft_content
+from utils import setup_driver, load_draft_content
 
 
 def run_substack():
@@ -21,7 +17,7 @@ def run_substack():
     # Process Substack drafts
     for draft in drafts:
         if draft.get("platform_name", "").lower() == "substack":
-            save_to_substack(driver, draft["title"], draft["body"], draft.get(
+            save_to_substack(driver, draft["title"], draft["body"], draft["tags"], draft.get(
                 "subtitle"))
 
     print("[INFO] Run completed. Tabs remain open for review.")

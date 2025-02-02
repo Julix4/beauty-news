@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-def save_to_substack(driver, title, body, tags, subtitle=None):
+def publish_substack(driver, title, body, tags, subtitle=None):
     """Save a draft post to Substack from home page."""
     print("[Substack] Navigating to Substack homepage...")
     driver.get("https://substack.com/home")
@@ -50,18 +50,6 @@ def save_to_substack(driver, title, body, tags, subtitle=None):
     continue_button = wait.until(EC.element_to_be_clickable(
         (By.XPATH, "//button[@id='publish' and @data-testid='publish-button']")))
     continue_button.click()
-
-    # Add tags (if provided)
-    if tags:
-        print(f"[Substack] Adding tags...")
-        tags_input = wait.until(EC.presence_of_element_located(
-            (By.XPATH, "//div[contains(@class, 'css-1amcjy9-control')]//input[@type='text']")))
-        tags_input.click()
-
-        for tag in tags:
-            tags_input.send_keys(tag)
-            tags_input.send_keys(Keys.ENTER)
-            time.sleep(1)
 
     # Click "Send to everyone now"
     print("[Substack] Publishing post...")
