@@ -3,7 +3,7 @@ import time
 from dotenv import load_dotenv
 from selenium import webdriver
 from utils import load_draft_content
-from save_substack_draft import save_to_substack
+from script.publish_substack import save_to_substack
 from script.publish_medium import draft_to_medium
 
 # Load environment variables

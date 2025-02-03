@@ -3,8 +3,8 @@ import time
 from utils import setup_driver
 from login_medium import login_to_medium
 from login_substack import login_to_substack
-from script.publish_medium import publish_medium
-from save_substack_draft import save_to_substack
+from publish_medium import publish_medium
+from publish_substack import publish_substack
 from run_medium import run_medium
 from run_substack import run_substack
 from utils import load_draft_content

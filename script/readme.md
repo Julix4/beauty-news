@@ -69,8 +69,7 @@ Draft content should be in **JSON format**. Below an example:
             "b",
             "c"
         ],
-        "subtitle": "subtitle",
-        "audience": "all"
+        "subtitle": "subtitle"
     }
 ```
 
@@ -80,3 +79,4 @@ Draft content is expected to be pre-prepared in JSON format and accessible by th
 
 Possible future updates:
 - AI image creation to complement Medium and Substack post.
+- Substack tags addition.
