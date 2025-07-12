@@ -1,6 +1,6 @@
-# Content Uutomation Posting
+# Content Automation Posting
 
-This repositori provides the content automation posting on **Medium** and **Substack** using **Python** and **Selenium**.
+This folder provides the content automation posting on **Medium** and **Substack** using **Python** and **Selenium**.
 
 ## Requirements
 - `Python`
