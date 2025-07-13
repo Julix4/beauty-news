@@ -1,0 +1,25 @@
+[
+    {
+        "platform_name": "Medium",
+        "title": "5 Ways AI is Transforming Marketing",
+        "body": "## Introduction\nArtificial intelligence (AI) is revolutionizing the way we approach marketing...",
+        "tags": [
+            "AI",
+            "Marketing",
+            "Technology"
+        ],
+        "featured_image": "https://example.com/image.jpg"
+    },
+    {
+        "platform_name": "Substack",
+        "title": "The Future of AI in Marketing",
+        "body": "### Why AI is the Future\nArtificial intelligence has become integral to modern marketing...",
+        "tags": [
+            "AI",
+            "Marketing",
+            "Trends"
+        ],
+        "subtitle": "Learn how AI is shaping the future of marketing and what it means for businesses.",
+        "audience": "all"
+    }
+]
