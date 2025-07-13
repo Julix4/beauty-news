@@ -1,11 +1,12 @@
 # Create function for news fetch
-import data.keywords as keywords
 import os
-from datetime import datetime
-import json
-import requests
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import data.keywords as keywords
 from dotenv import load_dotenv
-load_dotenv()
+import requests
+import json
+from datetime import datetime
 
 
 def fetch_beauty_news_score(api_key, keywords, preferred_sources, num_articles=6):
@@ -55,17 +56,18 @@ def fetch_beauty_news_score(api_key, keywords, preferred_sources, num_articles=6
     return sorted_articles[:num_articles]
 
 
-# Example Usage
-KEYWORDS = keywords.KEYWORDS["news"]
-PREFERRED_SOURCES = [
+# Test the script
+if __name__ == "__main__":
+    KEYWORDS = keywords.KEYWORDS["news"]
+    PREFERRED_SOURCES = [
     "theindustry.beauty", "businessoffashion.com", "glossy.co",
     "whowhatwear.com", "women.com", "allure.com",
     "marieclaire.co.uk", "vogue.co.uk", "vogue.com", "marieclaire.com",
     "women.co.uk"
-]
-API_KEY = os.environ["GOOGLE_API_KEY"]
-articles = fetch_beauty_news_score(API_KEY, KEYWORDS, PREFERRED_SOURCES)
+    ]
+    API_KEY = os.environ["GOOGLE_API_KEY"]
+    articles = fetch_beauty_news_score(API_KEY, KEYWORDS, PREFERRED_SOURCES)
 
-for i, article in enumerate(articles, start=1):
-    print(
-        f"{i}. {article['title']}\n   Source: {article['source']}\n   Published: {article['published']}\n   Link: {article['link']}\n")
+    for i, article in enumerate(articles, start=1):
+        print(
+            f"{i}. {article['title']}\n   Source: {article['source']}\n   Published: {article['published']}\n   Link: {article['link']}\n")

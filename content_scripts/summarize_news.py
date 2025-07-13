@@ -7,7 +7,7 @@ import json
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from scripts.scrape_articles import scrape_beauty_news
+from content_scripts.scrape_articles import scrape_beauty_news
 import google.generativeai as genai
 
 # Function for summarizing news for a specific platform

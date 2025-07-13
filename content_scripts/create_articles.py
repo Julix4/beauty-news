@@ -7,7 +7,7 @@ import json
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from scripts.scrape_articles import scrape_beauty_news
+from content_scripts.scrape_articles import scrape_beauty_news
 import google.generativeai as genai
 
 
@@ -44,26 +44,24 @@ def summarize_news(articles):
     print(response.text)
 
 # Function to convert response text to markdown format
-
-
 def to_markdown(text):
     return f"### Summary\n\n{text}"
 
 
-# Example usage
-
-# JSON file path
-article_links_path = "data/article_links_example.json"
+# Test the script
+if __name__ == "__main__":
+    # JSON file path
+    article_links_path = "data/article_links_example.json"
 
 # Read and parse the JSON
-with open(article_links_path, "r", encoding="utf-8") as file:
-    article_links = json.load(file)
+    with open(article_links_path, "r", encoding="utf-8") as file:
+        article_links = json.load(file)
 
-articles = []
+    articles = []
 
-for i, article in enumerate(article_links, start=0):
-    article = scrape_beauty_news(article_links[i]["link"])
-    articles.append(article['text'])
-    print(f"{i}. {article['title']}\n   Text: {article['text']}\n")
+    for i, article in enumerate(article_links, start=0):
+        article = scrape_beauty_news(article_links[i]["link"])
+        articles.append(article['text'])
+        print(f"{i}. {article['title']}\n   Text: {article['text']}\n")
 
-summarize_news(articles)
+        summarize_news(articles)

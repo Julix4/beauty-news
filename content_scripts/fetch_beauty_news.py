@@ -1,11 +1,13 @@
 # Import libraries
-# Create function for news fetch
-import data.keywords as keywords
 import os
-from datetime import datetime
-import json
-import requests
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import data.keywords as keywords
 from dotenv import load_dotenv
+import requests
+import json
+from datetime import datetime
+
 load_dotenv()
 
 
@@ -31,7 +33,6 @@ def fetch_beauty_news(api_key, keywords, num_articles=6):
     news_data = response.json().get("news_results", [])
 
     # Filter articles by recency and relevance (if necessary)
-    # today = datetime.now().date()
     filtered_articles = [
         {
             "title": article["title"],
@@ -52,12 +53,24 @@ def fetch_beauty_news(api_key, keywords, num_articles=6):
     return sorted_articles[:num_articles]
 
 
-# Example Usage
-""" API_KEY = os.environ["GOOGLE_API_KEY"]
-KEYWORDS = keywords.KEYWORDS["news"]
-articles = fetch_beauty_news(API_KEY, KEYWORDS)
+# Test the script
+if __name__ == "__main__":
+    API_KEY = os.environ.get("GOOGLE_API_KEY")
+    if not API_KEY:
+        print("Error: GOOGLE_API_KEY not found in environment variables")
+        exit(1)
 
-for i, article in enumerate(articles, start=1):
-    print(
-        f"{i}. {article['title']}\n   Source: {article['source']}\n   Published: {article['published']}\n   Link: {article['link']}\n")
- """
+    KEYWORDS = keywords.KEYWORDS["news"]
+    print(f"Fetching beauty news with keywords: {KEYWORDS}")
+
+    articles = fetch_beauty_news(API_KEY, KEYWORDS)
+
+    if articles:
+        print(f"\nFound {len(articles)} articles:")
+        for i, article in enumerate(articles, start=1):
+            print(f"{i}. {article['title']}")
+            print(f"   Source: {article['source']}")
+            print(f"   Published: {article['published']}")
+            print(f"   Link: {article['link']}\n")
+    else:
+        print("No articles found.")
